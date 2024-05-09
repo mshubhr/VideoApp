@@ -50,5 +50,7 @@ dependencies {
     implementation(libs.postgrest.kt)
     implementation(libs.ktor.client.android)
     implementation(libs.kotlinx.serialization.json)
-    implementation (libs.lottie)
+    implementation(libs.exoplayer.core)
+    implementation(libs.exoplayer.ui)
+
 }
