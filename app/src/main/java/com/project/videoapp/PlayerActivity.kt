@@ -1,8 +1,9 @@
+@file:Suppress("DEPRECATION")
+
 package com.project.videoapp
 
 import android.net.Uri
 import android.os.Bundle
-import android.widget.MediaController
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -26,7 +27,7 @@ class PlayerActivity : AppCompatActivity() {
         val videoUrl = intent.getStringExtra("videoUrl")
         val channel = intent.getStringExtra("channel")
         val title = intent.getStringExtra("title")
-        val likes = intent.getStringExtra("likes")
+        intent.getIntExtra("views", 0)
         val description = intent.getStringExtra("description")
 
         val channelTV = findViewById<TextView>(R.id.channel)

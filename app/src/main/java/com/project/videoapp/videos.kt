@@ -9,5 +9,7 @@ data class videos (
     var channelname: String,
     var title: String,
     var description: String,
-    var likes: Int
+    var views : Int,
+    var likes: Int,
+    var comments: Int
 )
