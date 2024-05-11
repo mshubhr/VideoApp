@@ -43,21 +43,6 @@ class MainActivity : AppCompatActivity(), VideoAdapter.OnItemClickListener {
         val mainRV = findViewById<RecyclerView>(R.id.recycler)
         searchView = findViewById(R.id.search)
 
-        val initialvideos = listOf(
-            videos(14, "https://axojtjqqnamuwrdhpiob.supabase.co/storage/v1/object/public/videos/12839997-uhd_3840_2160_30fps.mp4?t=2024-05-09T17%3A20%3A51.980Z", "Udaipur", "Fatehsagar lake", "Crowd at sunset", 169, 100, 25),
-            videos(15, "https://axojtjqqnamuwrdhpiob.supabase.co/storage/v1/object/public/videos/20799636-uhd_3840_2160_30fps.mp4?t=2024-05-10T07%3A08%3A06.045Z", "New Year", "Fireworks", "Celebrating New Year", 200, 20, 30),
-            videos(16, "https://axojtjqqnamuwrdhpiob.supabase.co/storage/v1/object/public/videos/1860079-uhd_2560_1440_25fps.mp4?t=2024-05-10T07%3A14%3A35.987Z", "New York", "Daily routine", "Traffic on the daily roads", 180, 69, 27),
-            videos(17, "https://axojtjqqnamuwrdhpiob.supabase.co/storage/v1/object/public/videos/1543760-hd_1920_1080_25fps.mp4?t=2024-05-10T07%3A13%3A18.339Z", "Sports", "Kids boxing", "Boxing practise with coach", 240, 159, 24),
-            videos(18, "https://axojtjqqnamuwrdhpiob.supabase.co/storage/v1/object/public/videos/2099568-hd_1920_1080_30fps.mp4?t=2024-05-10T07%3A18%3A43.979Z", "Adventure", "Car in dessert", "Safari in white dessert", 300, 210, 21),
-            videos(19, "https://axojtjqqnamuwrdhpiob.supabase.co/storage/v1/object/public/videos/3044805-uhd_3840_2160_25fps.mp4?t=2024-05-10T07%3A20%3A19.797Z", "People", "Girl & phone", "A girl at shopping center", 380, 30, 30),
-            videos(20, "https://axojtjqqnamuwrdhpiob.supabase.co/storage/v1/object/public/videos/3129576-uhd_3840_2160_30fps.mp4?t=2024-05-10T07%3A21%3A56.442Z", "Technology", "Cyber security", "Spider technology in cyber security", 420, 258, 35),
-            videos(21, "https://axojtjqqnamuwrdhpiob.supabase.co/storage/v1/object/public/videos/3134599-hd_1920_1080_24fps.mp4", "Works", "Laptop for music", "Music composer works with laptop", 384, 34, 30),
-            videos(22, "https://axojtjqqnamuwrdhpiob.supabase.co/storage/v1/object/public/videos/3281050-hd_1920_1080_18fps.mp4", "Aesthetics", "Ice-cream", "Aesthetics view of the ice cream", 410, 32, 30),
-            videos(23, "https://axojtjqqnamuwrdhpiob.supabase.co/storage/v1/object/public/videos/855564-hd_1920_1080_24fps.mp4", "Udaipur", "City Palace", "Foreigners are at city palace", 369, 36, 30),
-        )
-
-        videos.addAll(initialvideos)
-
         adapter = VideoAdapter(this, videos, this)
         mainRV.layoutManager = LinearLayoutManager(this)
         mainRV.adapter = adapter
@@ -105,6 +90,7 @@ class MainActivity : AppCompatActivity(), VideoAdapter.OnItemClickListener {
     override fun onItemClick(video: videos) {
         val intent = Intent(this, PlayerActivity::class.java)
         intent.putExtra("videoUrl", video.videourl)
+        intent.putExtra("thumbnails", video.thumbnails)
         intent.putExtra("title", video.title)
         intent.putExtra("channel", video.channelname)
         intent.putExtra("comments", video.comments)

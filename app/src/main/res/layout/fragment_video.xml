@@ -66,34 +66,34 @@
                 android:id="@+id/viewsc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="16sp"
-                android:textColor="@color/black"
                 android:drawablePadding="8dp"
                 android:paddingStart="8dp"
                 android:paddingEnd="8dp"
-                android:text="0 views" />
+                android:text="0 views"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/textlikes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="16sp"
-                android:textColor="@color/black"
                 android:drawablePadding="8dp"
                 android:paddingStart="8dp"
                 android:paddingEnd="8dp"
-                android:text="0 likes" />
+                android:text="0 likes"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/textcomments"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="16sp"
-                android:textColor="@color/black"
                 android:drawablePadding="8dp"
                 android:paddingStart="8dp"
                 android:paddingEnd="8dp"
-                android:text="0 comments" />
+                android:text="0 comments"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
 
         </LinearLayout>
 

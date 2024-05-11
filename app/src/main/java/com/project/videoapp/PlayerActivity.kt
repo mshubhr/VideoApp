@@ -27,7 +27,6 @@ class PlayerActivity : AppCompatActivity() {
         val videoUrl = intent.getStringExtra("videoUrl")
         val channel = intent.getStringExtra("channel")
         val title = intent.getStringExtra("title")
-        intent.getIntExtra("views", 0)
         val description = intent.getStringExtra("description")
 
         val channelTV = findViewById<TextView>(R.id.channel)

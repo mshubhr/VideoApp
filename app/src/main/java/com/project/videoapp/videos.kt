@@ -11,5 +11,6 @@ data class videos (
     var description: String,
     var views : Int,
     var likes: Int,
-    var comments: Int
+    var comments: Int,
+    val thumbnails: String
 )

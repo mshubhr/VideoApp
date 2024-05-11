@@ -14,6 +14,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -50,7 +52,7 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder> 
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView titleTextView, likesTextView, viewsTextView, commentsTextView, channelTextView;
+        TextView titleTextView, likesTextView, viewsTextView, commentsTextView, descriptionTextView, channelTextView;
         ImageView thumbnailIV;
 
         public ViewHolder(@NonNull View itemView) {
@@ -60,6 +62,7 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder> 
             viewsTextView = itemView.findViewById(R.id.viewsc);
             commentsTextView = itemView.findViewById(R.id.textcomments);
             channelTextView = itemView.findViewById(R.id.viewch);
+            descriptionTextView = itemView.findViewById(R.id.viewd);
             thumbnailIV = itemView.findViewById(R.id.thumbnail);
 
             itemView.setOnClickListener(new View.OnClickListener() {
@@ -69,26 +72,23 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder> 
                     if (position != RecyclerView.NO_POSITION && listener != null) {
                         listener.onItemClick(videos.get(position));
                     }
-
                 }
             });
         }
 
         public void bind(final videos video, final OnItemClickListener listener) {
-            Bitmap thumbnail = ThumbnailUtils.createVideoThumbnail(video.getVideourl(), MediaStore.Images.Thumbnails.MINI_KIND);
-            if (thumbnail != null) {
-                thumbnailIV.setImageBitmap(thumbnail);
-            } else {
-                thumbnailIV.setImageResource(R.drawable.thumbnail);
-            }
+
+            String thumbnails = "https://axojtjqqnamuwrdhpiob.supabase.co/storage/v1/object/public/thumnails/t" + video.getId() + ".jpg";
+            Glide.with(context).load(thumbnails).placeholder(R.drawable.placeholder_thumbnail).into(thumbnailIV);
+
             titleTextView.setText(video.getTitle());
-            likesTextView.setText("Likes : "+String.valueOf(video.getLikes()));
-            viewsTextView.setText("Views : "+String.valueOf(video.getViews()));
-            commentsTextView.setText("Comments : "+String.valueOf(video.getComments()));
+            likesTextView.setText("Likes: "+String.valueOf(video.getLikes()));
+            viewsTextView.setText("Views: "+String.valueOf(video.getViews()));
+            commentsTextView.setText("Comments: "+String.valueOf(video.getComments()));
             channelTextView.setText(video.getChannelname());
+            descriptionTextView.setText(video.getDescription());
         }
     }
-
 
     @NonNull
     @Override
@@ -106,6 +106,4 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder> 
     public int getItemCount() {
         return videos.size();
     }
-
-
 }
