@@ -1,54 +1,53 @@
 [versions]
-agp = "8.4.0"
-bom = "2.3.1"
-bomVersion = "VERSION"
+agp = "9.2.1"
+bom = "3.6.0"
 exoplayerCore = "2.19.1"
-githubSupabaseAndroid = "0.4.3"
-kotlin = "1.9.0"
-coreKtx = "1.13.1"
+glide = "5.0.7"
 junit = "4.13.2"
-junitVersion = "1.1.5"
-espressoCore = "3.5.1"
-appcompat = "1.6.1"
-kotlinxSerializationJson = "1.6.0"
-ktorClientAndroid = "2.3.10"
-ktorClientEngine_z = "KTOR_VERSION"
-lottie = "3.4.0"
-material = "1.12.0"
-activity = "1.9.0"
-constraintlayout = "2.1.4"
-uiTextAndroid = "1.6.7"
-xmodule_z = "VERSION"
-media3Exoplayer = "1.3.1"
-media3Common = "1.3.1"
+kotlin = "1.9.24"
+coreKtx = "1.18.0"
+junitVersion = "1.3.0"
+espressoCore = "3.7.0"
+appcompat = "1.7.1"
+kotlinxSerializationJson = "1.11.0"
+coroutines = "1.10.2"
+ktorClientAndroid = "3.4.3"
+lifecycleExtensions = "2.2.0"
+material = "1.13.0"
+activity = "1.13.0"
+constraintlayout = "2.2.1"
+media3Exoplayer = "1.10.0"
+media3Common = "1.10.0"
+recyclerview = "1.4.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+androidx-lifecycle-extensions1 = { module = "androidx.lifecycle:lifecycle-extensions", version.ref = "lifecycleExtensions" }
+androidx-recyclerview = { module = "androidx.recyclerview:recyclerview", version.ref = "recyclerview" }
 bom = { module = "io.github.jan-tennert.supabase:bom", version.ref = "bom" }
-bom-vversion = { module = "io.github.jan-tennert.supabase:bom", version.ref = "bomVersion" }
+compiler = { module = "com.github.bumptech.glide:compiler", version.ref = "glide" }
+exoplayer = { module = "com.google.android.exoplayer:exoplayer", version.ref = "exoplayerCore" }
 exoplayer-core = { module = "com.google.android.exoplayer:exoplayer-core", version.ref = "exoplayerCore" }
 exoplayer-ui = { module = "com.google.android.exoplayer:exoplayer-ui", version.ref = "exoplayerCore" }
-github-supabase-android = { module = "com.github.supabase:supabase-android", version.ref = "githubSupabaseAndroid" }
-junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
+junit = { module = "junit:junit", version.ref = "junit" }
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }
+kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutines" }
+kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines" }
 ktor-client-android = { module = "io.ktor:ktor-client-android", version.ref = "ktorClientAndroid" }
-ktor-client-engine_z = { module = "io.ktor:ktor-client-[engine]", version.ref = "ktorClientEngine_z" }
-lottie = { module = "com.airbnb.android:lottie", version.ref = "lottie" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 postgrest-kt = { module = "io.github.jan-tennert.supabase:postgrest-kt", version.ref = "bom" }
-androidx-ui-text-android = { group = "androidx.compose.ui", name = "ui-text-android", version.ref = "uiTextAndroid" }
-realtime-kt = { module = "io.github.jan-tennert.supabase:realtime-kt" }
-supabase-postgrest-kt = { module = "io.github.jan-tennert.supabase:postgrest-kt" }
-xmodule_z = { module = "io.github.jan-tennert.supabase:[module]", version.ref = "xmodule_z" }
+auth-kt = { module = "io.github.jan-tennert.supabase:auth-kt", version.ref = "bom" }
 androidx-media3-exoplayer = { group = "androidx.media3", name = "media3-exoplayer", version.ref = "media3Exoplayer" }
 androidx-media3-common = { group = "androidx.media3", name = "media3-common", version.ref = "media3Common" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 

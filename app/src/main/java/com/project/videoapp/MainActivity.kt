@@ -11,8 +11,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import io.github.jan.supabase.auth.Auth
 import io.github.jan.supabase.createSupabaseClient
-import io.github.jan.supabase.gotrue.Auth
 import io.github.jan.supabase.postgrest.Postgrest
 import io.github.jan.supabase.postgrest.from
 import kotlinx.coroutines.DelicateCoroutinesApi
@@ -64,7 +64,20 @@ class MainActivity : AppCompatActivity(), VideoAdapter.OnItemClickListener {
             }
         })
         adapter.notifyDataSetChanged()
-        fetchVideosFromSupabase()
+
+        GlobalScope.launch(Dispatchers.Main) {
+            try {
+                val response = supabaseClient.from("videos").select()
+                val data = response.decodeList<videos>()
+                videos.addAll(data)
+                adapter.notifyDataSetChanged()
+            } catch (e: Exception) {
+                Toast.makeText(
+                    this@MainActivity, "Error fetching videos: ${e.message}", Toast.LENGTH_SHORT
+                ).show()
+                Log.e("MainActivity", "Error fetching videos: ${e.message}", e)
+            }
+        }
     }
 
     @SuppressLint("NotifyDataSetChanged")
@@ -98,25 +111,5 @@ class MainActivity : AppCompatActivity(), VideoAdapter.OnItemClickListener {
         intent.putExtra("likes", video.likes)
         intent.putExtra("description", video.description)
         startActivity(intent)
-    }
-
-    @SuppressLint("NotifyDataSetChanged")
-    private fun fetchVideosFromSupabase() {
-        GlobalScope.launch(Dispatchers.Main) {
-            try {
-                val response = supabaseClient.from("videos").select()
-                val data = response.decodeList<videos>()
-                videos.addAll(data)
-                Log.e("MainActivity", "Fetched ${data.size} videos")
-                adapter.notifyDataSetChanged()
-            } catch (e: Exception) {
-                Toast.makeText(
-                    this@MainActivity,
-                    "Error fetching videos: ${e.message}",
-                    Toast.LENGTH_SHORT
-                ).show()
-                Log.e("MainActivity", "Error fetching videos: ${e.message}", e)
-            }
-        }
     }
 }
