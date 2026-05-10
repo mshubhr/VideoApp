@@ -1,3 +1,5 @@
+import org.gradle.kotlin.dsl.testImplementation
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
@@ -64,4 +66,8 @@ dependencies {
     implementation(libs.exoplayer)
     implementation(libs.glide)
     annotationProcessor(libs.compiler)
+
+    testImplementation(libs.java.client)
+    testImplementation(libs.selenium.java)
+    testImplementation(kotlin("test"))
 }
